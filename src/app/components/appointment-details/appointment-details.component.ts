@@ -45,7 +45,7 @@ export class AppointmentDetailsComponent implements OnInit, OnDestroy {
   }
 
   handleDelete(id) {
-    this.appointmentService.remove(id).subscribe(() => {
+    this.appointmentService.remove(id).subscribe(x => {
       this.success = true;
       this.appointment = null;
     });

@@ -1,40 +1,40 @@
 <div [hidden]="success" class="div-container p-2 mb-2 flex flex-col items-start">
 
     <div class="flex flex-row w-full items-baseline p-1">
-        <h1 class="mr-1 text-2xl font-medium">{{appointment.agenda}}</h1>
-        <h2 class="mr-1 text-sm font-medium text-gray-600">Organized by {{appointment.user.name}}</h2>
+        <h1 class="mr-1 text-2xl font-medium">{{!!appointment && appointment.agenda}}</h1>
+        <h2 class="mr-1 text-sm font-medium text-gray-600">Organized by {{!!appointment && appointment.user.name}}</h2>
     </div>
 
     <div class="flex flex-row w-full items-baseline p-2">
         <div class="flex flex-col w-full items-baseline">
             <label class="text-lg font-medium text-gray-600">Date from</label>
-            <span>{{appointment.date.start | date : 'MMM d, y'}}</span>
+            <span>{{!!appointment && appointment.date.start | date : 'MMM d, y'}}</span>
         </div>
         <div class="flex flex-col w-full items-baseline">
             <label class="text-lg font-medium text-gray-600">Date to</label>
-            <span>{{appointment.date.end | date : 'MMM d, y'}}</span>
+            <span>{{!!appointment && appointment.date.end | date : 'MMM d, y'}}</span>
         </div>
     </div>
 
     <div class="flex flex-row w-full items-baseline p-2">
         <div class="flex flex-col w-full items-baseline">
             <label class="text-lg font-medium text-gray-600">Time</label>
-            <span>{{appointment.time}}</span>
+            <span>{{!!appointment && appointment.time}}</span>
         </div>
         <div class="flex flex-col w-full items-baseline">
             <label class="text-lg font-medium text-gray-600">Room</label>
-            <span>{{appointment.room.name || "no room set"}}</span>
+            <span>{{!!appointment && appointment.room.name || "no room set"}}</span>
         </div>
     </div>
 
     <div class="flex flex-row w-full items-baseline p-2">
         <div class="flex flex-col w-full items-baseline">
             <label class="text-lg font-medium text-gray-600">Description</label>
-            <span>{{appointment.description}}</span>
+            <span>{{!!appointment && appointment.description}}</span>
         </div>
     </div>
 
-    <div class="flex flex-col w-full items-baseline p-2 mb-6">
+    <div *ngIf="appointment" class="flex flex-col w-full items-baseline p-2 mb-6">
         <div class="flex flex-col w-full items-baseline">
             <label class="text-lg font-medium text-gray-600">Participants</label>
             <span *ngFor="let person of appointment.participants">
@@ -44,8 +44,9 @@
         </div>
     </div>
 
-    <div *ngIf="appointment.userId === loggedUserId" class="flex flex-row space-x-4">
-        <a mat-raised-button color="primary" routerLink="../../../../appointment/update/{{appointment.id}}">EDIT</a>
+    <div *ngIf="!!appointment && appointment.userId === loggedUserId" class="flex flex-row space-x-4">
+        <a mat-raised-button color="primary"
+            routerLink="../../../../appointment/update/{{!!appointment && appointment.id}}">EDIT</a>
         <a mat-raised-button color="warn" (click)="handleDelete(appointment.id)">DELETE</a>
     </div>
 
