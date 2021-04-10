@@ -1,0 +1,18 @@
+<div class="container flex mx-auto w-full items-center justify-center">
+
+    <ul class="flex flex-col bg-gray-300 p-4">
+        <li *ngFor="let group of (list | sortByDate :'asc' | group :'date':'start' )" class="mb-4">
+            <div class="mb-3 font-medium text-lg">{{ group.key | date : 'MMM d, y' }}</div>
+            <ul>
+                <app-list-appointments-items *ngFor="let item of group.values" [appointment]="item">
+                </app-list-appointments-items>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+<div *ngIf="list.length === 0" class="container flex flex-col mx-auto w-full h-screen items-center justify-center">
+    <div class="empty-list-background h-2/3 w-2/3 "></div>
+    <span class="text-xl font-semibold text-gray-500">No appointments found</span>
+</div>

@@ -1,0 +1,15 @@
+.form-input {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+label {
+  font-weight: 500;
+  color: rgb(87, 100, 117);
+}

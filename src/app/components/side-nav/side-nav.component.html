@@ -1,0 +1,64 @@
+<div class="bg-gray-200">
+    <div class="flex flex-col">
+        <div class="w-64 h-screen bg-gray-800 mt-8 sm:mt-0">
+            <div class="flex items-center text-white px-8 py-2 mt-10">
+                <fa-icon [icon]="logo" class="mr-2" size="3x"></fa-icon>
+                <span class="text-2xl">Scheduler</span>
+            </div>
+
+            <div *ngIf="loggedIn" class="flex items-center text-gray-300 px-4 mt-8">
+                <span class="text-xl">Hello, {{ loggedUsername }}!</span>
+            </div>
+
+            <nav class="mt-2">
+                <a *ngIf="loggedIn"
+                    class="flex items-center py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:bg-blue-700 hover:text-blue-100 hover:border-blue-100"
+                    routerLink="/dashboard" routerLinkActive="bg-blue-700 text-blue-100 border-blue-100">
+                    <fa-icon [icon]="dashboard"></fa-icon>
+                    <span class="mx-4 font-medium">Dashboard</span>
+                </a>
+
+                <a *ngIf="loggedIn"
+                    class="flex items-center mt-5 py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"
+                    routerLink="/appointment/create" routerLinkActive="bg-blue-700 text-blue-100 border-blue-100">
+                    <fa-icon [icon]="plus"></fa-icon>
+                    <span class="mx-4 font-medium">Create appointment</span>
+                </a>
+
+                <a (click)="handleUserSession()"
+                    class="flex items-center mt-5 py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"
+                    routerLink="/home/signin" routerLinkActive="bg-blue-700 text-blue-100 border-blue-100">
+                    <fa-icon [icon]="loggedIn ? signout : signin"></fa-icon>
+                    <span class="mx-4 font-medium">{{loggedIn ? "Logout" : "Login" }}</span>
+                </a>
+
+
+
+                <div *ngIf="loggedIn && isAdmin" class="flex items-center text-gray-300 font-medium px-4 mt-10">
+                    <span class="text-2xl">Admin</span>
+                </div>
+
+                <a *ngIf="loggedIn && isAdmin"
+                    class="flex items-center mt-2 py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"
+                    routerLink="/admin/users" routerLinkActive="bg-blue-700 text-blue-100 border-blue-100">
+                    <fa-icon [icon]="users"></fa-icon>
+                    <span class="mx-4 font-medium">Users</span>
+                </a>
+
+                <a *ngIf="loggedIn && isAdmin"
+                    class="flex items-center mt-4 py-2 px-8 text-gray-400 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"
+                    routerLink="/admin/rooms" routerLinkActive="bg-blue-700 text-blue-100 border-blue-100">
+                    <fa-icon [icon]="room"></fa-icon>
+                    <span class="mx-4 font-medium">Rooms</span>
+                </a>
+
+            </nav>
+
+            <div class="absolute bottom-0 my-10">
+                <span class="flex items-center py-2 px-8 text-gray-700 hover:text-gray-500">
+                    <span class="mx-4 font-medium">&copy; Kelden Wangchuk</span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

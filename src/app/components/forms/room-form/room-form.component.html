@@ -1,0 +1,43 @@
+<div [hidden]="success"
+    class="bg-gray-200 rounded max-w-md mx-auto py-16 px-12 m-16 flex flex-col items-center justify-center">
+    <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+        <h1 class="mb-8 text-4xl text-gray-600 font-medium text-center">Add new room</h1>
+        <form [formGroup]="form" (ngSubmit)="submitHandler()">
+
+            <mat-form-field class="w-full mb-4">
+                <mat-label>Room name</mat-label>
+                <input matInput formControlName="name" class="border-solid border border-gray-400 rounded px-2 py-3"
+                    type="text" placeholder="1 - 24 characters" autocomplete="off" />
+
+                <mat-error *ngIf="name.errors?.required && name.touched">
+                    Name required
+                </mat-error>
+                <mat-error *ngIf="name.errors?.maxlength && name.touched">
+                    Name should be less than 24 characters
+                </mat-error>
+
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || loading"
+                class="w-full text-center py-3 rounded text-white hover:bg-indigo-800 focus:outline-none my-1">
+                Create Room
+            </button>
+        </form>
+
+        <span *ngIf="error && errorMsg" class="text-red-500 mt-4">
+            {{errorMsg}}
+        </span>
+
+    </div>
+
+    <div class="text-grey-dark mt-6">
+        <a class="no-underline border-b border-blue-800 text-blue-500" routerLink="/admin/rooms">
+            Back to List
+        </a>.
+    </div>
+</div>
+
+<div *ngIf="success" class="div-container flex-col bg-gray-200 p-5 m-4 max-w-lg mx-auto">
+    <h2 class="font-medium">Room created Successfully</h2>
+    <a class="underline" routerLink="/admin/rooms">Go back to list</a>
+</div>

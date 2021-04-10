@@ -1,0 +1,44 @@
+<div class="bg-gray-200 rounded max-w-md mx-auto py-16 px-12 m-16 flex flex-col items-center justify-center">
+    <!-- User profile image -->
+    <img class="rounded-full h-32 w-32" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="user avatar" />
+    <form [formGroup]="form" class="mt-8 mb-4" (ngSubmit)="submitHandler()">
+        <mat-form-field class="w-full">
+            <mat-label>Email address</mat-label>
+            <input matInput formControlName="email" class="border-solid border border-gray-400 rounded px-2 py-3"
+                type="email" placeholder="Email address" autocomplete="off" />
+
+            <mat-error *ngIf="email.errors?.required && email.touched" class="text-red-500">
+                Email required
+            </mat-error>
+            <mat-error *ngIf="email.errors?.email && email.touched" class="text-red-500">
+                Please enter a valid email
+            </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field class="w-full mb-6">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" class="border-solid border border-gray-400 rounded px-2 py-3"
+                type="password" placeholder="Password" required />
+            <mat-error *ngIf="password.invalid && password.touched" class="text-red-500">
+                Password required
+            </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || loading"
+            class="w-full text-center py-3 rounded text-white hover:bg-indigo-800 focus:outline-none my-1">
+            Sign in
+        </button>
+    </form>
+
+    <span *ngIf="error && errorMsg" class="text-red-500">
+        {{errorMsg}}
+    </span>
+
+    <div class="text-grey-dark mt-6">
+        Don't have an account?
+        <a class="no-underline border-b border-blue-800 text-blue-500" routerLink="../signup">
+            Sign up
+        </a>.
+    </div>
+</div>

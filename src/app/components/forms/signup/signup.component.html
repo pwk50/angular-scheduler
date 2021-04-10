@@ -1,0 +1,72 @@
+<div [hidden]="success"
+    class="bg-gray-200 rounded max-w-md mx-auto py-16 px-12 m-16 flex flex-col items-center justify-center">
+    <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+        <h1 class="mb-8 text-4xl text-gray-600 font-medium text-center">Register account</h1>
+        <form [formGroup]="form" (ngSubmit)="submitHandler()">
+
+            <mat-form-field class="w-full">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" class="border-solid border border-gray-400 rounded px-2 py-3"
+                    type="text" placeholder="user name" autocomplete="off" />
+
+                <mat-error *ngIf="name.errors?.required && name.touched">
+                    Name required
+                </mat-error>
+                <mat-error *ngIf="name.errors?.maxlength && name.touched">
+                    Name should be less than 30 characters
+                </mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Email address</mat-label>
+                <input matInput formControlName="email" class="border-solid border border-gray-400 rounded px-2 py-3"
+                    type="email" placeholder="Email address" autocomplete="off" />
+
+                <mat-error *ngIf="email.errors?.required && email.touched">
+                    Email required
+                </mat-error>
+                <mat-error *ngIf="email.errors?.email && email.touched">
+                    Please enter a valid email
+                </mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field class="w-full mb-8">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" class="border-solid border border-gray-400 rounded px-2 py-3"
+                    type="password" placeholder="Enter password" required />
+                <mat-error *ngIf="password.errors?.required && password.touched">
+                    Password required
+                </mat-error>
+                <mat-error *ngIf="password.errors?.pattern && password.touched">
+                    Minimum eight characters, at least one letter and one number
+                </mat-error>
+            </mat-form-field>
+
+
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || loading"
+                class="w-full text-center py-3 rounded text-white hover:bg-indigo-800 focus:outline-none my-1">
+                Create Account
+            </button>
+        </form>
+
+        <span *ngIf="error && errorMsg" class="text-red-500 mt-4">
+            {{errorMsg}}
+        </span>
+
+    </div>
+
+    <div class="text-grey-dark mt-6">
+        Already have an account?
+        <a class="no-underline border-b border-blue-800 text-blue-500" routerLink="../signin">
+            Log in
+        </a>.
+    </div>
+</div>
+
+<div *ngIf="success" class="div-container flex-col bg-gray-200 p-5 m-4 max-w-lg mx-auto">
+    <h2 class="font-medium">User created Successfully</h2>
+    <h3 class="font-light">Please note that your account will need to be approved by admin before you can login</h3>
+    <a class="underline" routerLink="../signin">Go back to login</a>
+</div>

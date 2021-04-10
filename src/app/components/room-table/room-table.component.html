@@ -1,0 +1,53 @@
+<div class="overflow-x-auto">
+    <div class="min-w-screen min-h-screen flex flex-col items-center justify-center bg-gray-100 font-sans
+        overflow-x-scroll">
+        <div class="mt-8 w-full lg:w-3/6">
+            <div class="flex w-full justify-between">
+                <h1 class="text-3xl font-medium text-gray-500 mr-5">Room list</h1>
+                <a routerLink="/admin/rooms/create" mat-raised-button color="primary" class="lg:w-2/6">
+                    <fa-icon [icon]="addIcon" class="mr-1"></fa-icon>
+                    ADD ROOM
+                </a>
+            </div>
+            <div class="bg-white shadow-md rounded my-6">
+                <table class="min-w-max w-full table-auto">
+                    <thead>
+                        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                            <th class="py-3 px-6 text-left">ROOM ID</th>
+                            <th class="py-3 px-6 text-left">ROOM NAME</th>
+                            <th class="py-3 px-6 text-center">ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-600 text-sm font-light">
+                        <tr *ngFor="let room of list; let i = index;"
+                            class="border-b border-gray-200 hover:bg-gray-100">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <span class="font-medium">{{room.id}}</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-left">
+                                <div class="flex items-center">
+                                    <span>{{room.name}}</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex justify-center">
+                                    <div (click)="handleDelete(i)"
+                                        class="flex flex-row cursor-pointer w-4 text-sm font-medium text-gray-400 transform hover:text-purple-500 hover:scale-110">
+                                        <fa-icon class="mr-2" [icon]="deleteIcon"></fa-icon>
+                                        <span>DELETE</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="list.length === 0"
+                    class="border-b border-gray-200 hover:bg-gray-100 text-center py-10 font-medium text-gray-500">
+                    No new rooms
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

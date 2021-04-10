@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.xng-breadcrumb-root {
+  padding: 8px 16px;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #e5e7eb;
+}
+
+.xng-breadcrumb-separator {
+  padding: 0 4px;
+}
+
+.div-container {
+  @apply bg-gray-200 rounded-md flex flex-1 border-gray-400;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.empty-list-background {
+  background-image: url('assets/empty.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
