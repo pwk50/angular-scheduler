@@ -8,10 +8,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 3. `cd server` and `node script.js` to first run server
 4. `npm run start` from root folder to run the angular application
 
-# Default set admin user
+## Default set admin user
 ```
 email : admin@admin.com
 password : admin1234
+```
+## Sample user 
+```
+email : emattioni1@wordpress.org
+password : Klr49f3gW
 ```
 
 # Routes
