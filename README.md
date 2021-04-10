@@ -2,26 +2,23 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
 
-## Development server
+# Steps to deploy
+1. `npm install` from root folder
+2. `cd server` and `npm install` to install server dependencies
+3. `cd server` and `node script.js` to first run server
+4. `npm run start` from root folder to run the angular application
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Routes
+| Routes                       | Description                                                            |
+| ---------------------------- | ---------------------------------------------------------------------- |
+| dashboard/list               | Home page after user logs in displaying **all or user's** appointments |
+| dashboard/list/details/:id   | Detail page of particular appointment                                  |
+| home/signin                  | Sign in page                                                           |
+| home/signup                  | Sign out page                                                          |
+| appointment/create           | Appointment creation page                                              |
+| appointment/update/:id       | Appointment updation page                                              |
+| admin/users                  | Admin dashboard showing registered users awaiting approval             |
+| admin/rooms                  | Admin dashboard showing rooms                                          |
+| admin/rooms/create           | Create a room                                                          |
+| not-found-404                | 404 page                                                               |
